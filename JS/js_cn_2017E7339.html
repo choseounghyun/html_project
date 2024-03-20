@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>지우개</title>
+ <style>
+ body{
+   
+  margin:20px;
+ }
+ canvas{
+    
+  cursor:crosshair;
+  border:solid 2px #000;
+  
+   -webkit-box-shadow:1px 1px 20px #ccc;
+   -moz-box-shadow:1px 1px 20px #ccc;
+  box-shadow:1px 1px 20px #ccc;
+ }
+ input {
+  border:1px solid #000;
+ }
+ </style>
+ <script>
+  var canvas;
+  var ctx;
+  var del = 0;
+  var flag = false;
+ 
+    function ready(){
+   canvas = document.getElementById("canvas");
+   ctx = canvas.getContext("2d");
+   canvas.onmousedown = drawStart;
+   canvas.onmousemove = drawing;
+   window.onmouseup = drawEnd;
+   
+  }
+
+  function drawStart (event){
+   ctx.beginPath();
+   var xpos = event.target.offsetLeft;
+   var ypos = event.target.offsetTop;
+   ctx.moveTo(event.clientX-xpos, event.clientY-ypos);
+   flag = true;
+  }
+
+    function drawing (event){
+   if(flag) {
+   var xpos = event.target.offsetLeft;
+   var ypos = event.target.offsetTop;
+   ctx.lineCap = 'round'
+   
+   if(del==0) {
+    ctx.lineTo(event.clientX-xpos, event.clientY-ypos);
+   } else if(del==1) {
+    ctx.clearRect(event.clientX-xpos-20, event.clientY-ypos-20, 50, 50);
+   }
+   
+   ctx.stroke();
+   }
+  }
+
+  function drawEnd(event){
+   flag = false;
+  }
+
+  function pen() {
+      del = 0;
+  }
+ 
+  function eraser(){
+   del = 1;
+  }
+
+  function lineChange(){
+        ctx.lineWidth = document.getElementById('wir').value;
+    }
+     function colorChange(){
+        ctx.strokeStyle = document.getElementById('col').value;
+    } 
+    
+    //전체 지우기 
+    function clearAll(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+ </script>
+</head>
+
+<body onload="ready()">
+ <div>
+    <input id="col" type="color" value="##00BFF" onchange="colorChange()"></imput>
+     펜 크기<input id="wir" type="range" name="펜 굵기" min="0" max="100" value="1" step ="1" onchange="lineChange()"></input>
+     <input type="button" value="펜" onclick="pen()"></input>
+     <input type="button" value="지우개" onclick="eraser()"></input>
+     <button onclick="clearAll()">전체지우기</button> 
+ </div>
+ <canvas id="canvas" width="800" height="500"></canvas>
+</body>
+</html>

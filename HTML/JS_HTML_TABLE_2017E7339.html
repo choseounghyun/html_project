@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <title>TABLE(표만들기)</title>
+    <style>
+        body{
+            color :yellow;
+        }
+    </style>
+</head>
+<body scroll="no">
+<fieldset>
+    <legend> TABLE(표만들기) </legend>
+    <pre>표를 작성할 수 있게 도와주는 태그.
+      <xmp>전체 구성은 <table>, <caption>, <thead>, <tfoot>, <tbody>, <tr>, <td>, <th> 등으로 구성된다.</xmp> 
+        
+<xmp>
+    <table> : 표 전체
+    <caption> : 표 제목
+    <thead> : 표 헤드 셀 그룹
+    <tfoot> : 표 바닥 셀 그룹
+    <tbody> : 표 데이터 셀 그룹
+    <tr> : 행. 여러개의<td>, <th> 포함
+    <td> : 데이터 셀
+    <th> : 제목(헤딩) 셀
+    </xmp>    
+<table border="1">
+	<caption>1학기 성적</caption>
+	<thead>
+		<tr><th>이름</th><th>HTML</th><th>CSS</th></tr>
+	</thead>
+	<tfoot>
+		<tr><th>합</th><th>225</th><th>230</th></tr>
+	</tfoot>
+	<tbody>
+		<tr><td>황기태</td><td>80</td><td>70</td></tr>
+		<tr><td>이재문</td><td>95</td><td>99</td></tr>
+		<tr><td>이병은</td><td>40</td><td>61</td></tr>
+	</tbody>
+</table>
+</pre>     
+</fieldset>
+     
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>JS2017E7339_event</title>
+
+	<style>
+        body{
+            color :rgb(255, 0, 200);
+        }
+    
+		table {
+			width: 25%;
+			border: 1px solid #444444;
+		}
+	</style>
+</head>
+
+<body>
+	<p id="p">안녕!<br>
+		<hr>
+	</p>
+	
+	<button onclick="f1(event)">너는 누구니?-1</button>
+	<button onclick="f2(event)">숫자 출력-2</button>
+	<button onclick="f3(event)">구구단-3</button>
+	<button onclick="f4(event)">구구단 아름답게-4</button>
+	
+	<script>
+		function f1(e) { // e는 현재 발생한 이벤트 객체
+			p.innerHTML += "<br> 2017E7339 조승현입니다.<br>";
+		}
+		function f2(e) { // e는 현재 발생한 이벤트 객체
+			p.innerHTML += "<br>";
+			for (a = 0; a < 10; a++) {
+				p1.innerHTML += a + " ";
+			}
+			p.innerHTML += "<br>";
+		}
+		function f3(e) { // e는 현재 발생한 이벤트 객체
+			N = prompt("구구단 몇단이 궁금하시나요??????");
+			N = parseInt(N);
+			p.innerHTML += "입력 값은" + N + "입니다.";
+			for (a = 1; a < 10; a++) {
+				p1.innerHTML += N + "*" + a + "=" + (N * a) + "<br>";
+			}
+
+		}
+		function f4(e) { // e는 현재 발생한 이벤트 객체
+			x = "<hr>"; 
+			x += "<table border=2>"; 
+			x += "<tr><td bgcolor = yellow >1단</td><td bgcolor = lime >2단</td><td bgcolor = yellow >3단</td></tr>"
+			for (i = 1; i <= 9; i++) {
+				x += "<tr>"; 
+				for (j = 1; j < 4; j++) {
+					x += "<td>"+ j + 'x' + i + '=' + (j * i) + "</td>";
+				} x += "</tr>";
+				
+			}
+			x += "<tr><td bgcolor = lime >4단</td><td bgcolor = yellow>5단</td><td bgcolor = lime >6단</td></tr>"
+			for (i = 1; i <= 9; i++) {
+				x += "<tr>"; 
+				for (j = 4; j < 7; j++) {
+
+					x += "<td>"+ j + 'x' + i + '=' + (j * i) + "</td>";
+				}
+				x += "</tr>";
+				
+			}
+			x += "<tr bgcolor = yellow ><td>7단</td><td bgcolor = lime >8단</td><td bgcolor = yellow>9단</td></tr>"
+			for (i = 1; i <= 9; i++) {
+				x += "<tr>"; 
+				for (j = 7; j <= 9; j++) {
+
+					x += "<td>"+ j + 'x' + i + '=' + (j * i) + "</td>";
+				} x += "</tr>";
+				
+			}x += "</table>";
+			x +="<hr>";
+			p.innerHTML += x; 
+
+		}
+
+		document.getElementById("p").onmouseover = f;
+	</script>
+</body>
+
+</html>
